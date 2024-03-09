@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Spring</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            width: 50%;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 42px;
+        }
+        p {
+            font-size: 18px;
+        }
+        a {
+            text-decoration: none;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1>DemoWebPage</h1>
+        <a th:href="@{/members/login}">로그인</a>
+        <a th:href="@{/members/new}">회원 가입</a>
+        <a th:href="@{/members}">회원 목록</a>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
