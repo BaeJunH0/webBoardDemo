@@ -9,6 +9,7 @@ import webBoard.demo.domain.Member;
 import webBoard.demo.service.MemberService;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -48,14 +49,16 @@ public class MemberController {
     @PostMapping(value = "/members/login")
     public String check_login(MemberForm form) {
         Member member = new Member();
-        member.setId(form.getId());
-        member.setPassword(form.getPassword());
-        member.setNickName(name + ' ' + ++seq);
-        if(memberService.findOne(member.getId()).isPresent()){
-            return "/mainPage";
+        Optional<Member> memberCheck = memberService.findOne(form.getId());
+        if(memberCheck.isPresent()){
+            member.setId(form.getId());
+            member.setPassword(form.getPassword());
+            System.out.println("Success");
+            return "/home";
         }
         else{
-            return "redirect:/";
+            System.out.println("Fail");
+            return "/home";
         }
     }
 
