@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public String join(Member member) {
+    public Long join(Member member) {
         checkingDuplicate(member); //중복 회원 검증
         memberRepository.save(member);
         return member.getId();
@@ -28,8 +28,8 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Optional<Member> findOne(String id) {
-        return memberRepository.findById(id);
+    public Optional<Member> findOne(String userId) {
+        return memberRepository.findByUserId(userId);
     }
 
     @Override
@@ -37,7 +37,12 @@ public class MemberServiceImpl implements MemberService{
         memberRepository.findByNick(member.getNickName())
                 .ifPresent(m -> {
                     System.out.println("Error Occur");
-                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                    throw new IllegalStateException("이미 존재하는 회원명입니다.");
+                });
+        memberRepository.findByUserId((member.getUserId()))
+                .ifPresent(m -> {
+                    System.out.println("Error Occur");
+                    throw new IllegalStateException("이미 존재하는 회원ID입니다.");
                 });
     }
 }

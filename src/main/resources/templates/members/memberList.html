@@ -56,12 +56,14 @@
     <thead>
     <tr>
       <th>ID</th>
-      <th>이름</th>
+      <th>UserID</th>
+      <th>NickName</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="member : ${members}">
       <td th:text="${member.id}"></td>
+      <td th:text="${member.userId}"></td>
       <td th:text="${member.nickName}"></td>
     </tr>
     </tbody>

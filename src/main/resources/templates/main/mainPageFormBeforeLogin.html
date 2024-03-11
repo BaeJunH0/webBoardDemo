@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인 페이지</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header, nav {
+        background-color: #4caf50; /* 네비게이션 바와 헤더의 색상 통일 */
+        color: #fff;
+        padding: 10px;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 50px;
+    }
+    h1 {
+        font-size: 36px;
+    }
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    nav {
+        padding: 10px 0;
+        text-align: right;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+    }
+    nav a:hover {
+        background-color: #388e3c; /* 호버 시 색상 변경 */
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a th:href="@{/members}">회원목록</a>
+    <a th:href="@{/members/login}">로그인</a>
+    <a th:href="@{/members/new}">회원가입</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>환영합니다!</h1>
+  <p>백엔드 공부를 위한 데모 페이지 입니다! 자세한 내용은 아래 링크를 참조해주세요.</p>
+  <p><a href="https://github.com/BaeJunH0/webBoardDemo">더 알아보기</a></p>
+</div>
+
+</body>
+</html>

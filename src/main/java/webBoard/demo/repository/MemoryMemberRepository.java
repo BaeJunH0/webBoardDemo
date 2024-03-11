@@ -6,7 +6,8 @@ import webBoard.demo.domain.Member;
 import java.util.*;
 @Repository
 public class MemoryMemberRepository implements MemberRepository{
-    private static Map<String, Member> store = new HashMap<>();
+    private static Map<Long, Member> store = new HashMap<>();
+
     @Override
     public Member save(Member member) {
         store.put(member.getId(), member);
@@ -14,8 +15,10 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Optional<Member> findById(String id) {
-        return Optional.ofNullable(store.get(id));
+    public Optional<Member> findByUserId(String userId) {
+        return store.values().stream()
+                .filter(member -> member.getUserId().equals(userId))
+                .findAny();
     }
 
     @Override
