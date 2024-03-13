@@ -36,12 +36,10 @@ public class MemberServiceImpl implements MemberService{
     public void checkingDuplicate(Member member) {
         memberRepository.findByNick(member.getNickName())
                 .ifPresent(m -> {
-                    System.out.println("Error Occur");
                     throw new IllegalStateException("이미 존재하는 회원명입니다.");
                 });
         memberRepository.findByUserId((member.getUserId()))
                 .ifPresent(m -> {
-                    System.out.println("Error Occur");
                     throw new IllegalStateException("이미 존재하는 회원ID입니다.");
                 });
     }

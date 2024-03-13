@@ -63,12 +63,30 @@
     <input type="text" id="nickName" name = "nickName" required>
 
     <label for="password1">비밀번호:</label>
-    <input type="password" id="password1" name = "password1" required>
+    <input type="password" id="password1" name = "password1" oninput="checkPasswordMatch()" required>
 
-    <label for="password2">비밀번호:</label>
-    <input type="password" id="password2" name = "password2" required>
+    <label for="password2">비밀번호 확인:</label>
+    <input type="password" id="password2" name = "password2" oninput="checkPasswordMatch()" required>
+    <span id = "message" class = "checking"></span>
 
     <input type="submit" value="가입">
+
+    <script>
+      function checkPasswordMatch() {
+        const password = document.getElementById("password1").value;
+        const confirm_password = document.getElementById("password2").value;
+        const messageElement = document.getElementById("message");
+        const text = document.querySelector(".checking");
+
+        if (password === confirm_password) {
+          text.style.color = 'green';
+          document.getElementById("message").innerHTML = "비밀번호 일치";
+        } else {
+          text.style.color = 'red';
+          document.getElementById("message").innerHTML = "비밀번호 불일치";
+        }
+      }
+    </script>
   </form>
 </div>
 </body>
