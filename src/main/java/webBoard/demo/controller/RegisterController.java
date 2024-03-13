@@ -38,11 +38,14 @@ public class RegisterController {
             memberService.checkingDuplicate(member);
         }
         catch (IllegalStateException e){
-            if(e.getMessage().equals("이미 존재하는 회원명입니다."))
+            if(e.getMessage().equals("이미 존재하는 회원명입니다.")) {
                 System.out.println("same nick name!");
-            else
+                return "redirect:/members/new?check=duplicateMember";
+            }
+            else{
                 System.out.println("same user id!");
-            return "members/createMemberForm";
+                return "redirect:/members/new?check=duplicateUserid";
+            }
         }
         memberService.join(member);
         return "redirect:/";

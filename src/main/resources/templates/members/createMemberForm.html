@@ -52,7 +52,7 @@
         }
     </style>
 </head>
-<body>
+<body onload = error()>
 <div class="container">
   <h2>회원가입</h2>
   <form id="signupForm" action="/members/new" method="post">
@@ -85,6 +85,13 @@
           text.style.color = 'red';
           document.getElementById("message").innerHTML = "비밀번호 불일치";
         }
+      }
+      function error(){
+        const u = new URL(window.location.href).searchParams.get("check");
+        if(u === 'duplicateMember')
+          alert('중복된 닉네임입니다!');
+        if(u === 'duplicateUserid')
+          alert('중복된 아이디입니다!');
       }
     </script>
   </form>
