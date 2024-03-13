@@ -33,12 +33,12 @@ public class LoginController {
             }
             else{
                 System.out.println("Wrong Password");
-                return "/members/loginForm";
+                return "redirect:/members/login?check=wrongPassword";
             }
         }
         else{
             System.out.println("Wrong Id");
-            return "/members/loginForm";
+            return "redirect:/members/login?check=wrongId";
         }
     }
 }
