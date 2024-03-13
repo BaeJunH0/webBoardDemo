@@ -30,10 +30,9 @@ public class RegisterController {
         }
 
         Member member = new Member();
-        member.setId(++seq);
-        member.setUserId(form.getUserId());
+        member.setUserid(form.getUserId());
         member.setPassword(password1);
-        member.setNickName(form.getNickName());
+        member.setNickname(form.getNickName());
 
         try {
             memberService.checkingDuplicate(member);

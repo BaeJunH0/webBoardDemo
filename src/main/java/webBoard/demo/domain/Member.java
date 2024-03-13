@@ -1,52 +1,31 @@
 package webBoard.demo.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
 import static ch.qos.logback.core.joran.JoranConstants.NULL;
 
+@Setter
+@Getter
+@Entity
 public class Member {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String userId;
+    private String userid;
     private String password;
-    private String nickName;
+    private String nickname;
     public Member(){
-        this.id = -1;
-        this.userId = this.password = this.nickName = NULL;
+        this.userid = this.password = this.nickname = NULL;
     }
     public Member(int id, String userId, String password, String nickName) {
         this.id = id;
-        this.userId = userId;
+        this.userid = userId;
         this.password = password;
-        this.nickName = nickName;
+        this.nickname = nickName;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setUserId(String id) {
-        this.userId = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
 }

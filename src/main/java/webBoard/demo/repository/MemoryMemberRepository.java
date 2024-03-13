@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import webBoard.demo.domain.Member;
 
 import java.util.*;
-@Repository
 public class MemoryMemberRepository implements MemberRepository{
     private static Map<Long, Member> store = new HashMap<>();
 
@@ -17,14 +16,14 @@ public class MemoryMemberRepository implements MemberRepository{
     @Override
     public Optional<Member> findByUserId(String userId) {
         return store.values().stream()
-                .filter(member -> member.getUserId().equals(userId))
+                .filter(member -> member.getUserid().equals(userId))
                 .findAny();
     }
 
     @Override
     public Optional<Member> findByNick(String nickName) {
         return store.values().stream()
-                .filter(member -> member.getNickName().equals(nickName))
+                .filter(member -> member.getNickname().equals(nickName))
                 .findAny();
     }
 

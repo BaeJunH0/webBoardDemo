@@ -1,6 +1,7 @@
 package webBoard.demo.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import webBoard.demo.domain.Member;
 import webBoard.demo.repository.MemberRepository;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
 
@@ -34,11 +36,11 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void checkingDuplicate(Member member) {
-        memberRepository.findByNick(member.getNickName())
+        memberRepository.findByNick(member.getNickname())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원명입니다.");
                 });
-        memberRepository.findByUserId((member.getUserId()))
+        memberRepository.findByUserId((member.getUserid()))
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원ID입니다.");
                 });

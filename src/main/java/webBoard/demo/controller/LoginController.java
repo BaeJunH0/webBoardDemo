@@ -29,7 +29,7 @@ public class LoginController {
             Member member2 = memberCheck.get();
             if(member2.getPassword().equals(form.getPassword())){
                 System.out.println("Success");
-                return "redirect:/after?nickName=" + member2.getNickName();
+                return "redirect:/after?nickName=" + member2.getNickname();
             }
             else{
                 System.out.println("Wrong Password");
