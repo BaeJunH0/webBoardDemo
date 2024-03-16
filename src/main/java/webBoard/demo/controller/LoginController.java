@@ -19,7 +19,7 @@ public class LoginController {
 
     @GetMapping(value = "/members/login")
     public String login(){
-        return "/members/loginForm";
+        return "members/loginMemberForm";
     }
     @PostMapping(value = "/members/login")
     public String check_login(LoginForm form) {
